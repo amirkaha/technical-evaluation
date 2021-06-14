@@ -20,24 +20,9 @@ public class AbstractPage {
         driver.get(url);
     }
 
-    public void enterText(By by, String text) {
-        driver.findElement(by).sendKeys(text);
-    }
 
     public void waitFor(By by) {
         wait.until(visibilityOfElementLocated(by));
-    }
-
-    public void clickOn(By by) {
-        driver.findElement(by).click();
-    }
-
-    public WebElement findElement(By by) {
-        return driver.findElement(by);
-    }
-
-    public String getText(By by) {
-        return driver.findElement(by).getText();
     }
 
     public  boolean isClickable(WebElement webe)

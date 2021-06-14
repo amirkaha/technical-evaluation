@@ -33,11 +33,8 @@ public class ScenarioTest {
                 .scrollToBottom().clickButton().checkPromptDoesNotExist();
     }
 
-
-
-
     @AfterTest
-    public void recordFailure() {
+    public void cleanUp() {
         driver.manage().deleteAllCookies();
         driver.quit();
     }

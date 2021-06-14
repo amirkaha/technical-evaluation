@@ -14,14 +14,7 @@ import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
 public class PolicyPage extends AbstractPage {
-    private final static By LOAN_AMOUNT = By.id("LoanAmount");
-    private final static By SELECT_YEARS = By.id("LoanLengthYears");
-    private final static By YEARS_DROP_DOWN = By.xpath("//*[@id=\"LoanLengthYears\"]/option[1]");
-    private final static By CALCULATE = By.xpath("//*[@id=\"calculatorInner\"]/form/fieldset/input[3]");
-    private final static By REPAYMENT = By.id("js-repayment");
-
     private final static By PROMPT = By.cssSelector("#content > div._2J452 > div._1dzSy > div.Y7Y5d._1OU0K");
-
 
     public PolicyPage(WebDriver driver) {
         super(driver);
@@ -31,8 +24,6 @@ public class PolicyPage extends AbstractPage {
         get("https://www.afr.com/policy/foreign-affairs/capability-edge-and-keeping-south-china-sea-open-crucial--christopher-pyne-20180924-h15rq9");
         return this;
     }
-
-
 
     public PolicyPage checkPromptExists() throws NoAlertPresentException, InterruptedException {
         waitFor(PROMPT);
