@@ -1,0 +1,1 @@
+1/ Ensure the data is updated 20 minutes, by checking the last updated time and current time - After 20 minutes has passed, I should be able to hit refresh and have new data displayed, with "Updated" message being the current time.
