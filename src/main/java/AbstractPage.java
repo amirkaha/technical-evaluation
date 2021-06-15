@@ -7,7 +7,6 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class AbstractPage {
     private final static int TIMEOUT = 10;
-
     protected final WebDriver driver;
     private final WebDriverWait wait;
 
@@ -20,22 +19,11 @@ public class AbstractPage {
         driver.get(url);
     }
 
-
     public void waitFor(By by) {
         wait.until(visibilityOfElementLocated(by));
     }
 
-    public  boolean isClickable(WebElement webe)
-    {
-        try
-        {
-            wait.until(ExpectedConditions.elementToBeClickable(webe));
-            return true;
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
+    public void waitForPromptToDisappear(WebElement element) {
+        wait.until(ExpectedConditions.attributeToBe(element, "data-testid", "SubscriptionPrompt-false"));
     }
-
 }

@@ -1,16 +1,6 @@
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.google.common.io.Files;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.ITestResult;
 import org.testng.annotations.*;
-import java.io.File;
-import java.io.IOException;
 
 public class ScenarioTest {
     private WebDriver driver;
@@ -18,19 +8,18 @@ public class ScenarioTest {
     @BeforeTest
     public void setUp() {
         driver = new ChromeDriver();
-
     }
 
     @Test
-    public void subscriptionPromptIsDisplayed() throws InterruptedException {
+    public void subscriptionPromptIsDisplayed() {
         new PolicyPage(driver)
-                .loadPage().checkPromptExists().captureScreen();
+                .loadPage().checkPromptExists().captureScreen("popupPresent");
     }
 
     @Test
-    public void subscriptionPromptIsNotDisplayed() throws InterruptedException {
+    public void subscriptionPromptIsNotDisplayed() {
         new PolicyPage(driver)
-                .scrollToBottom().clickButton().checkPromptDoesNotExist();
+                .scrollToBottom().checkPromptDoesNotExist().captureScreen("popupNotPresent");
     }
 
     @AfterTest
@@ -38,5 +27,4 @@ public class ScenarioTest {
         driver.manage().deleteAllCookies();
         driver.quit();
     }
-
 }
